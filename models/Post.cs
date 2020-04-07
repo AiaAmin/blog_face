@@ -24,6 +24,20 @@ namespace blog.models
             Real++;
             return Fake;
         }
+        
+
+        public int UpdateFake(int newVal)
+        {
+            Fake += newVal;
+            Real += newVal;
+            return Fake;
+        }
+
+        public override DateTime GetCreationDate()
+        {
+            Console.WriteLine("in new implementation");
+            return DateTime.Now;
+        }
 
         // States
         // attribute: very weak member that lives in class and shiould be private

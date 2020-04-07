@@ -9,7 +9,6 @@ namespace blog.models
     // private: local accessed  within the container element
     public class BaseModel
     {
-
         // to set state into class use one of [field - property - automatic property]
         /*public DateTime GetCreationDate()
         {
@@ -25,5 +24,11 @@ namespace blog.models
         public DateTime CreationDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
         public User Owner { get; set; }
+
+        public virtual DateTime GetCreationDate()
+        {
+            Console.WriteLine("In original implementation");
+            return DateTime.Now;
+        }
     }
 }

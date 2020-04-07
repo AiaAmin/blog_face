@@ -25,6 +25,9 @@ namespace blog
             Console.WriteLine(Post.Fake); // "11"
             Console.WriteLine(pst2.Real); // 10
 
+            Post p = new Post();
+
+            p.GetCreationDate();
         }
     }
 }
