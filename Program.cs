@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
+using blog.memoryDB;
 using blog.models;
+using blog.services;
 using Microsoft.VisualBasic;
 
 namespace blog
@@ -9,25 +12,36 @@ namespace blog
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Aia from Pradise!");
+            NormalUserService userSrv = new NormalUserService();
 
-            // TypeName VarName = value;
-            Console.WriteLine(Post.Fake); // ""
-            Post pst = new Post(); // referencType
-            pst.UpdateFake();
-            Console.WriteLine(Post.Fake); // 11
-            Console.WriteLine(pst.Real); // 11
-            Post.Fake = 20;
-            Post pst2 = new Post();
-            Console.WriteLine(Post.Fake); // "10"
-            Console.WriteLine(pst2.Real); // 10
+            for (int i = 0; i < 5; i++)
+            {
+                userSrv.SignUp(new NormalUser()
+                {
+                    Email = i + "test@mail.com",
+                    Name = "test" + i,
+                    Password = "pass"
+                });
+            }
 
-            pst.UpdateFake(); //
-            Console.WriteLine(Post.Fake); // "11"
-            Console.WriteLine(pst2.Real); // 10
+            Console.WriteLine("Users count is :");
+            Console.WriteLine(memoryDB.MemoryDB.NormalUsers.Count);
 
-            Post p = new Post();
+            // login
+            bool logged = userSrv.Login("0test@mail.com", "pass");
+            if (logged)
+            {
+                Console.WriteLine("First login has been done succesfully");
+            }
 
-            p.GetCreationDate();
+
+            userSrv.Block("0test@mail.com", "1test@mail.com");
+
+            if (MemoryDB.NormalUsers.First(u => u.Email == "0test@mail.com").BlockedUsers
+                .Exists(s => s == "1test@mail.com"))
+            {
+                Console.WriteLine("User has been blocked successfully");
+            }
         }
     }
 }
