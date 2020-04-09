@@ -27,7 +27,7 @@ namespace blog
             Console.WriteLine("Users count is :");
             Console.WriteLine(memoryDB.MemoryDB.NormalUsers.Count);
 
-            // login
+            /*// login
             bool logged = userSrv.Login("0test@mail.com", "pass");
             if (logged)
             {
@@ -41,7 +41,7 @@ namespace blog
                 .Exists(s => s == "1test@mail.com"))
             {
                 Console.WriteLine("User has been blocked successfully");
-            }
+            }*/
         }
     }
 }

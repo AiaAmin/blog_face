@@ -39,11 +39,13 @@ namespace blog.services
         // BlockUser 
         public void Block(string sessionToken, string blockedUserMail)
         {
-            LoginSession session = MemoryDB.LoginSessions.First(s =>
+            /*LoginSession session = MemoryDB.LoginSessions.First(s =>
                 s.Token == sessionToken && s.ExpirtedAt > DateTime.Now.ToUniversalTime());
             
             
             loggedUsr.BlockedUsers.Add(blockedUserMail);
+            */
+            
         }
 
         // Logout
