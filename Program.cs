@@ -19,9 +19,9 @@ namespace blog
         {
             Console.WriteLine("Hello Aia from Pradise!");
 
-            string text =File.ReadAllText("Users.json");
+            string text = File.ReadAllText("Users.json");
             Console.WriteLine("Contents of User.json = {0}", text);
-            Post pst=new Post(); //int x=10 calling the constructor
+            Post pst = new Post(); //int x=10 calling the constructor
             // NormalUserService userSrv = new NormalUserService();
             // for (int i = 0; i < 5; i++)
             // {
@@ -38,9 +38,7 @@ namespace blog
             // }
 
 
-
             // saveToFile(memoryDB.MemoryDB.NormalUsers,"try2.txt");
-
 
 
             /*// login
@@ -58,8 +56,6 @@ namespace blog
             {
                 Console.WriteLine("User has been blocked successfully");
             }*/
-
-
         }
 
         // static void saveToFile(object data, string fileName)
@@ -76,23 +72,15 @@ namespace blog
         //         Console.WriteLine("###Saving data to "+fileName+" is done successfully ###");
 
 
-
         // }
 
         //read from file
-static void readFromFile (string fileName)
-{
-
-
+        static void readFromFile(string fileName)
+        {
             string text1 = System.IO.File.ReadAllText(fileName);
 
             // Display the file contents to the console. Variable text is a string.
             System.Console.WriteLine("Contents of WriteText.txt = {0}", text1);
-
-}
-
-
-
+        }
     }
-
 }
