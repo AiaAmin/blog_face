@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using blog.DAL;
 using blog.models;
 using blog.memoryDB;
 
@@ -7,20 +9,31 @@ namespace blog.services
 {
     public class NormalUserService
     {
+        private readonly IRepository<NormalUser> _normalsUsersRepo;
+        private readonly IRepository<LoginSession> _loginSessionRepo;
+
+        public NormalUserService(IRepository<NormalUser> normalsUsersRepo, IRepository<LoginSession> loginSessionRepo)
+        {
+            _normalsUsersRepo = normalsUsersRepo;
+            _loginSessionRepo = loginSessionRepo;
+        }
+
         // AddPost => PostService
         // FollowUser 
         // Login 
         public bool Login(string email, string password)
         {
-            if (MemoryDB.NormalUsers.Exists(u => u.Email == email && u.Password == password))
+            List<NormalUser> usrs = _normalsUsersRepo.Find(new NormalUser() {Email = email, Password = password});
+            if (usrs.Count > 0)
             {
-                MemoryDB.LoginSessions.Add(new LoginSession()
+                _loginSessionRepo.Add(new LoginSession()
                 {
                     Token = Guid.NewGuid().ToString(),
                     Email = email,
                     LoginAt = DateTime.Now.ToUniversalTime(),
                     ExpirtedAt = DateTime.Now.AddDays(3).ToUniversalTime()
                 });
+                return true;
             }
 
             return false;
@@ -29,7 +42,7 @@ namespace blog.services
         // Signup
         public void SignUp(NormalUser newUser)
         {
-            MemoryDB.NormalUsers.Add(newUser);
+            _normalsUsersRepo.Add(newUser);
         }
 
 
@@ -39,18 +52,21 @@ namespace blog.services
         // BlockUser 
         public void Block(string sessionToken, string blockedUserMail)
         {
-            /*LoginSession session = MemoryDB.LoginSessions.First(s =>
-                s.Token == sessionToken && s.ExpirtedAt > DateTime.Now.ToUniversalTime());
+            // 1. Retrieve logged user
+            LoginSession session = _loginSessionRepo.FindOne(new LoginSession()
+                {Token = sessionToken, ExpirtedAt = DateTime.Now.ToUniversalTime()});
             
-            
-            loggedUsr.BlockedUsers.Add(blockedUserMail);
-            */
-            
+            NormalUser usr = _normalsUsersRepo.FindOne(new NormalUser() {Email = session.Email});
+
+            // 2. Edit loggedUser, to update its blockedUsers with blockedMail
+            usr.BlockedUsers.Add(blockedUserMail);
+            _normalsUsersRepo.Edit(usr);
         }
 
         // Logout
         public void Logout(string email)
         {
+            
         }
     }
 }
