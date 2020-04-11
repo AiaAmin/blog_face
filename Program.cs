@@ -33,12 +33,7 @@ namespace blog
             //     });
             Postutil.getPostCount();
 
-                //read from file
-            string text1 = System.IO.File.ReadAllText("Users.txt");
-
-            // Display the file contents to the console. Variable text is a string.
-            System.Console.WriteLine("Contents of WriteText.txt = {0}", text1);
-
+            readFromFile("Users.txt");
 
             // }
 
@@ -67,22 +62,35 @@ namespace blog
 
         }
 
-    // static void saveToFile(object data, string fileName)
-    // {
-    //         // var data = memoryDB.MemoryDB.NormalUsers;
-    //         var DatasString = JsonConvert.SerializeObject(data);
-    //         // Console.WriteLine(DatasString);
-    //         // string filePath = @"Users.json";
-    //         using (StreamWriter outputFile = new StreamWriter(fileName))
-    //         {
-    //             outputFile.WriteLine(DatasString);
-    //         }
+        // static void saveToFile(object data, string fileName)
+        // {
+        //         // var data = memoryDB.MemoryDB.NormalUsers;
+        //         var DatasString = JsonConvert.SerializeObject(data);
+        //         // Console.WriteLine(DatasString);
+        //         // string filePath = @"Users.json";
+        //         using (StreamWriter outputFile = new StreamWriter(fileName))
+        //         {
+        //             outputFile.WriteLine(DatasString);
+        //         }
 
-    //         Console.WriteLine("###Saving data to "+fileName+" is done successfully ###");
+        //         Console.WriteLine("###Saving data to "+fileName+" is done successfully ###");
 
 
 
-    // }
+        // }
+
+        //read from file
+static void readFromFile (string fileName)
+{
+
+
+            string text1 = System.IO.File.ReadAllText(fileName);
+
+            // Display the file contents to the console. Variable text is a string.
+            System.Console.WriteLine("Contents of WriteText.txt = {0}", text1);
+
+}
+
 
 
     }
