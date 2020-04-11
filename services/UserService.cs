@@ -55,7 +55,7 @@ namespace blog.services
             // 1. Retrieve logged user
             LoginSession session = _loginSessionRepo.FindOne(new LoginSession()
                 {Token = sessionToken, ExpirtedAt = DateTime.Now.ToUniversalTime()});
-            
+
             NormalUser usr = _normalsUsersRepo.FindOne(new NormalUser() {Email = session.Email});
 
             // 2. Edit loggedUser, to update its blockedUsers with blockedMail
@@ -66,7 +66,13 @@ namespace blog.services
         // Logout
         public void Logout(string email)
         {
-            
+            // retriev session by email
+            LoginSession session = _loginSessionRepo.FindOne(new LoginSession()
+                {Email = email, ExpirtedAt = DateTime.Now.ToUniversalTime()});
+
+            // update session's expirydate 
+            session.ExpirtedAt = DateTime.Now.ToUniversalTime();
+            _loginSessionRepo.Edit(session);
         }
     }
 }
