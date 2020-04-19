@@ -21,8 +21,9 @@ namespace blog
             Console.WriteLine("Hello Aia from Pradise!");
 
             // Login
-            IRepository<NormalUser> normalUserRepo=new 
-            NormalUserService userSrv =new NormalUserService();
+            IRepository<NormalUser> normalUserRepo = new MemoryDBRepository<NormalUser>();
+            IRepository<LoginSession> loginSesionRepo = new MemoryDBRepository<LoginSession>();
+            NormalUserService userSrv = new NormalUserService(normalUserRepo, loginSesionRepo);
         }
 
         //read from file

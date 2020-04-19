@@ -71,15 +71,19 @@ namespace blog.memoryDB
             {
                 case "NormalUsers":
                     NormalUser usr = item as NormalUser;
-                    MemoryDB.NormalUsers.FindAll(u => usr.Email!="" ? u.Email == usr.Email);
+                    MemoryDB.NormalUsers.FindAll(u =>
+                        usr.Email != "" ? u.Email == usr.Email : true && usr.Name != "" ? u.Name == usr.Name : true);
                     break;
                 case "LoginSessions":
                     LoginSession loginSession = item as LoginSession;
                     MemoryDB.LoginSessions.Add(loginSession);
                     break;
                 default:
+                    return null;
                     break;
             }
+
+            return null;
         }
 
         public T FindOne(T item)
