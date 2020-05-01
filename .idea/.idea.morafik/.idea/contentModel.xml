@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="/rust_expanded_macros/yaxlb95v" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.4.0/build/netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.15.1/build/netcoreapp2.0/nunit.engine.api.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.15.1/build/netcoreapp2.0/nunit.engine.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.15.1/build/netcoreapp2.0/NUnit3.TestAdapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.15.1/build/netcoreapp2.0/NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_morafik.-2004374606.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="DAL" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Dal.csproj" t="IncludeRecursive" />
+        <e p="FakeRepo.cs" t="Include" />
+        <e p="IRepository.cs" t="Include" />
+        <e p="memoryDB" t="Include">
+          <e p="MemoryDB.cs" t="Include" />
+          <e p="MemoryDBRepository.cs" t="Include" />
+        </e>
+        <e p="models" t="Include">
+          <e p="BaseModel.cs" t="Include" />
+          <e p="Comment.cs" t="Include" />
+          <e p="Like.cs" t="Include" />
+          <e p="LoginSession.cs" t="Include" />
+          <e p="NormalUser.cs" t="Include" />
+          <e p="Post.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Dal.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="pgDB" t="Include">
+          <e p="BlogContext.cs" t="Include" />
+          <e p="PgRepository.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="services" t="Include">
+          <e p="UserService.cs" t="Include" />
+        </e>
+      </e>
+      <e p="DalTest" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DalTest.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="DalTest.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="UnitTest1.cs" t="Include" />
+      </e>
+      <e p="morafik.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
