@@ -1,37 +1,40 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using Dal.models;
-using Dal.pgDB;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dal.DAL.pgDB
+namespace Dal.pgDB
 {
-    public class PgRepository<T> : IRepository<T>
+    public class PgRepository<T> : IRepository<T> where T : class, IEntity
     {
+        private readonly MorafikContext _dbContext;
+        private readonly DbSet<T> _dbSet;
+
+        public PgRepository()
+        {
+            _dbContext = new MorafikContext();
+            _dbSet = _dbContext.Set<T>();
+        }
+
         public void Add(T item)
         {
-            return;
+            _dbSet.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public void Edit(T item)
         {
-            throw new System.NotImplementedException();
+            _dbContext.SaveChanges();
         }
 
         public void Delete(T item)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Remove(item);
+            _dbContext.SaveChanges();
         }
 
-        public List<T> Find(T item)
+        public IQueryable<T> Find()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public T FindOne(T item)
-        {
-            throw new System.NotImplementedException();
+            return _dbSet.AsQueryable();
         }
     }
 }

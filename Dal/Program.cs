@@ -1,6 +1,6 @@
 ﻿using System;
-using Dal.DAL.pgDB;
 using Dal.models;
+using Dal.pgDB;
 using Microsoft.EntityFrameworkCore.Storage;
 
 // using System.Web.Extensions;

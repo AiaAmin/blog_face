@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Dal
 {
@@ -14,7 +15,6 @@ namespace Dal
         void Delete(T item);
 
         // Find
-        List<T> Find(T item);
-        T FindOne(T item);
+        IQueryable<T> Find();
     }
 }
