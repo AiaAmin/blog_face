@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Dal.models;
 
 namespace Dal.DAL
 {
@@ -22,10 +21,7 @@ namespace Dal.DAL
 
         public List<T> Find(T item)
         {
-            NormalUser fakeUser = new NormalUser() {Email = "aia@mail.com", Password = "ahmed", Gender = "Female"};
-            List<NormalUser> users = new List<NormalUser>() {fakeUser};
-            List<T> usrs = users as List<T>;
-            return usrs;
+            return null;
         }
 
         public T FindOne(T item)

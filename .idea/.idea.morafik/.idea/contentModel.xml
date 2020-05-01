@@ -17,8 +17,14 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Dal.csproj" t="IncludeRecursive" />
         <e p="FakeRepo.cs" t="Include" />
+        <e p="IEntity.cs" t="Include" />
         <e p="IRepository.cs" t="Include" />
-        <e p="models" t="Include" />
+        <e p="models" t="Include">
+          <e p="Blind.cs" t="Include" />
+          <e p="Sighted.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="VehicleType.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -27,7 +33,7 @@
           </e>
         </e>
         <e p="pgDB" t="Include">
-          <e p="BlogContext.cs" t="Include" />
+          <e p="MorafikContext.cs" t="Include" />
           <e p="PgRepository.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />

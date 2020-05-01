@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata;
 using Dal.models;
 using Dal.pgDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dal.DAL.pgDB
 {
@@ -9,8 +11,7 @@ namespace Dal.DAL.pgDB
     {
         public void Add(T item)
         {
-            MorafikContext ctx = new MorafikContext();
-            ctx.SaveChanges();
+            return;
         }
 
         public void Edit(T item)
