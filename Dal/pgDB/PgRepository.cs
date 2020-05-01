@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using Dal.models;
+using Dal.pgDB;
 
 namespace Dal.DAL.pgDB
 {
@@ -7,14 +9,7 @@ namespace Dal.DAL.pgDB
     {
         public void Add(T item)
         {
-            BlogContext ctx = new BlogContext();
-            ctx.Users.Add(new User()
-            {
-                Email = "ayman@mail.com",
-                Name = "ayman",
-                Password = "myPass"
-            });
-
+            MorafikContext ctx = new MorafikContext();
             ctx.SaveChanges();
         }
 

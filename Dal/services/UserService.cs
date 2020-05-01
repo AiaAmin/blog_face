@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Dal.memoryDB;
-using Dal.DAL;
-using Dal.models;
 
 namespace Dal.services
 {
-    public class NormalUserService
+    /*public class NormalUserService
     {
         private readonly IRepository<NormalUser> _normalsUsersRepo;
         private readonly IRepository<LoginSession> _loginSessionRepo;
@@ -74,5 +70,5 @@ namespace Dal.services
             session.ExpirtedAt = DateTime.Now.ToUniversalTime();
             _loginSessionRepo.Edit(session);
         }
-    }
+    }*/
 }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Dal.models;
 
-namespace Dal.DAL
+namespace Dal
 {
     public interface IRepository<T>
     {
