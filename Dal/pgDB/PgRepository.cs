@@ -12,6 +12,7 @@ namespace Dal.pgDB
         public PgRepository()
         {
             _dbContext = new MorafikContext();
+            _dbContext.Database.EnsureCreated();
             _dbSet = _dbContext.Set<T>();
         }
 
@@ -21,7 +22,7 @@ namespace Dal.pgDB
             _dbContext.SaveChanges();
         }
 
-        public void Edit(T item)
+        public void Update()
         {
             _dbContext.SaveChanges();
         }

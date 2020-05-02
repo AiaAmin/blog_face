@@ -9,7 +9,7 @@ namespace Dal
         void Add(T item);
 
         // Edit
-        void Edit(T item);
+        void Update();
 
         // Delete
         void Delete(T item);

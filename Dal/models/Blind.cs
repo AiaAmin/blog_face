@@ -5,7 +5,8 @@ namespace Dal.models
 {
     public class Blind : IEntity
     {
-        [Key] public Guid UserId { get; set; }
+        [Key]
+        public Guid UserId { get; set; }
         public User User { get; set; }
         public string MedicalReportUrl { get; set; }
         public DateTime CreationDate { get; set; }
