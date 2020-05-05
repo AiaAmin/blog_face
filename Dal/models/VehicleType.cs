@@ -5,7 +5,7 @@ namespace Dal.models
 {
     public class VehicleType : IEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Type { get; set; }
         public List<Sighted> Sighteds { get; set; }
         public DateTime CreationDate { get; set; }
