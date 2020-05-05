@@ -15,8 +15,8 @@ namespace Dal.models
         public byte Gender { get; set; }
         public string NationalIdImage { get; set; }
         public string Password { get; set; }
-        public City city {get;set;}
-        public Job job {get;set;}
+
+
         public DateTime CreationDate { get; set; }
         public Guid OwnerId { get; set; }
         public DateTime LastModificationDate { get; set; }
