@@ -10,7 +10,7 @@ namespace Dal.models
         public User User { get; set; }
         public string VehicleNumber { get; set; }
         public bool IsQualified { get; set; }
-        public int? VehicleTypeId { get; set; }
+        public int VehicleTypeId { get; set; }
         public VehicleType VehicleType { get; set; }
         public DateTime CreationDate { get; set; }
         public Guid OwnerId { get; set; }
