@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System;
 namespace Dal.models
 {
-    public class Services:IEntity
+    public class Service:IEntity
     {
         public int Id {get;set;}
         public string Name{get;set;}
+        
         public List <Meeting> Meeting {get;set;}
         
         public ServicesSighted servicesSighted {get;set;}
