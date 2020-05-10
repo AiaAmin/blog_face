@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OXtKiwlWRY/376Z4EIuqYE6bbaetK0BiIoR8+C8qTbsR6whaSXju3U2B7xkCMQJVpfJx5S9knPn2vXGxNJOIwA==",
+  "dgSpecHash": "gIM4zske5YHsDJxePz411REZrjTiV/5DhC7RVvp4vBQTVlnUoOslYImFz44hEK5mYROTMzqNaEYdiyDBlZ+otw==",
   "success": true,
-  "projectFilePath": "/Users/ayman/RiderProjects/blogSol/blogTest/blogTest.csproj",
+  "projectFilePath": "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj",
   "expectedPackageFiles": [
     "/Users/ayman/.nuget/packages/castle.core/4.4.0/castle.core.4.4.0.nupkg.sha512",
     "/Users/ayman/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.0/microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

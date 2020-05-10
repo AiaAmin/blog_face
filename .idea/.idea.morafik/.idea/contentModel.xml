@@ -16,7 +16,6 @@
         <e p=".gitignore" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Dal.csproj" t="IncludeRecursive" />
-        <e p="FakeRepo.cs" t="Include" />
         <e p="IEntity.cs" t="Include" />
         <e p="IRepository.cs" t="Include" />
         <e p="models" t="Include">

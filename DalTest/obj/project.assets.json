@@ -5238,7 +5238,7 @@
       "outputPath": "/Users/ayman/RiderProjects/blogSol/DalTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ayman/.config/NuGet/NuGet.Config"
+        "/Users/ayman/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
