@@ -1,0 +1,4 @@
+C:\Users\Aia\Desktop\c#\1\blog_face\DalTest\obj\Debug\netcoreapp3.1\DalTest.csprojAssemblyReference.cache
+C:\Users\Aia\Desktop\c#\1\blog_face\DalTest\obj\Debug\netcoreapp3.1\DalTest.csproj.CoreCompileInputs.cache
+C:\Users\Aia\Desktop\c#\1\blog_face\DalTest\obj\Debug\netcoreapp3.1\DalTest.AssemblyInfoInputs.cache
+C:\Users\Aia\Desktop\c#\1\blog_face\DalTest\obj\Debug\netcoreapp3.1\DalTest.AssemblyInfo.cs
