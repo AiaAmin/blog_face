@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dal.pgDB
@@ -18,6 +20,7 @@ namespace Dal.pgDB
 
         public void Add(T item)
         {
+            item.CreationDate = DateTime.Now.ToUniversalTime();
             _dbSet.Add(item);
             _dbContext.SaveChanges();
         }

@@ -14,7 +14,11 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
+            "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
