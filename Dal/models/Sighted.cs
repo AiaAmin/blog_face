@@ -17,6 +17,7 @@ namespace Dal.models
         public ServiceTime ServiceTime { get; set; }
         public int ServicesSightedId { get; set; }
         public List<SightedSkill> SightedSkills { get; set; }
+        public List<PostApplicant> PostApplicants { get; set; }
         public List<SightedLanguage> SightedLanguages { get; set; }
         public List<SightedService> SightedServices { get; set; }
         public DateTime CreationDate { get; set; }

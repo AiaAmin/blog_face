@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dal.models
 {
     public class Meeting : IEntity
     {
-        public int Id { get; set; }
+        [Key] public Guid PostId { get; set; }
+        public Post Post { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public string Place { get; set; }

@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using System;
+using System.Collections.Generic;
 
 namespace Dal.models
 {
@@ -8,10 +9,13 @@ namespace Dal.models
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }
-        public Boolean Status { get; set; }
+        public Enum Status { get; set; }
         public string Content { get; set; }
+        public int SightedId { get; set; }
+        public Sighted Sighted { get; set; }
         public int BlindId { get; set; }
         public Blind Blind { get; set; }
+        public List<PostApplicant> PostApplicants { get; set; }
         public DateTime CreationDate { get; set; }
         public Guid OwnerId { get; set; }
         public DateTime LastModificationDate { get; set; }

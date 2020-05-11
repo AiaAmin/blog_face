@@ -815,19 +815,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/ayman/.nuget/packages/": {}
+    "C:\\Users\\Aia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj",
+      "projectUniqueName": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
       "projectName": "Bll",
-      "projectPath": "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj",
-      "packagesPath": "/Users/ayman/.nuget/packages/",
-      "outputPath": "/Users/ayman/RiderProjects/blogSol/Bll/obj/",
+      "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
+      "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ayman/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -838,8 +838,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
-              "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj"
+            "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj": {
+              "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj"
             }
           }
         }
@@ -867,7 +867,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
