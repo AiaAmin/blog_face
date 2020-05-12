@@ -1,60 +1,92 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using Dal;
-// using Dal.models;
-// using Dal.pgDB;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dal;
+using Dal.models;
+using Dal.pgDB;
 
-// namespace Bll
-// {
-//     public class PostMgr : 
-//     {
-//         private readonly IRepository<Post> _repository;
+namespace Bll
+{
+    public class PostMgr : IPostMgr
+    {
+        private readonly IRepository<Post> _repositoryPost;
 
-//         public PostMgr()
-//         {
-//             // Bad practice called "tight coupling"
-//         //     _repository = new PgRepository<Post>();
-//         // }
+        private readonly IRepository<PostApplicant> _repositoryPostAppl;
+        public PostMgr()
+        {
+            // Bad practice called "tight coupling"
+            _repositoryPost = new PgRepository<Post>();
+        }
+        public void Add(Post post)
+        {
+            _repositoryPost.Add(post);
+        }
 
-//         // public void Add(Post Post)
-//         // {
-//         //     _repository.Add(Post);
-//         // }
+        public void Edit(Post post)
+        {
+            Post existingPost = _repositoryPost.Find().First(p => p.Id == post.Id);
+            existingPost.Title = post.Title;
+            existingPost.Content=post.Content;
+            existingPost.LastModificationDate = DateTime.Now.ToUniversalTime();
+            _repositoryPost.Update();
+        }
 
-//         // public void Edit(Post Post)
-//         // {
-//         //     Post existingPost = _repository.Find().First(p => p.Id == Post.Id);
-//         //     existingPost.Name = Post.Name;
-//         //     existingPost.LastModificationDate = DateTime.Now.ToUniversalTime();
-//         //     _repository.Update();
-//         // }
+        public void Remove(Guid id)
+        {
+            Post existingPost = _repositoryPost.Find().First(p => p.Id == id);
+            _repositoryPost.Delete(existingPost);
+        }
+        public List<Post> Find(Post post)
+        {
+            var q = _repositoryPost.Find();
+            if (post.Id !=null)
+            {
+                return q.Where(p => p.Id == post.Id).ToList();
+            }
 
-//         // public void Remove(int id)
-//         // {
-//         //     Post existingPost = _repository.Find().First(p => p.Id == id);
-//         //     _repository.Delete(existingPost);
-//         // }
+            if (post.Title.Length > 0)
+            {
+                q = q.Where(p => p.Title.Contains(post.Title));
+            }
+            if (post.Content.Length > 0)
+            {
+                q = q.Where(p => p.Content.Contains(post.Content));
+            }
 
-//         // public List<Post> Find(Post Post)
-//         // {
-//         //     var q = _repository.Find();
-//         //     if (Post.Id > 0)
-//         //     {
-//         //         return q.Where(p => p.Id == Post.Id).ToList();
-//         //     }
 
-//         //     if (Post.Name.Length > 0)
-//         //     {
-//         //         q = q.Where(p => p.Name.Contains(Post.Name));
-//         //     }
+            return q.ToList();
+        }
+        public void Close(Guid id)
+        {
+            Post existingPost = _repositoryPost.Find().First(p => p.Id == id); //post
+            existingPost.Status = PostStatus.Closed;
+            _repositoryPost.Update();
+        }
+        public void Reject(int postId, int applicantId)
+        {
+            throw new NotImplementedException();
+        }
+        public void Finish(int postId, int finalizerId)
+        {
+            throw new NotImplementedException();
+        }
 
-//         //     return q.ToList();
-//         // }
+        public List<Post> Find(Post post, int pgNum, int pgSize)
+        {
+            throw new NotImplementedException();
+        }
 
-//         // public void Close(int id)
-//         // {
+        public void Approve(int postId, int applicantId)
+        {
+            throw new NotImplementedException();
+        }
 
-//         // }
-//     }
-// }
+        public void Apply(int postId, int applicantId)
+        {
+            PostApplicant appl = new PostApplicant();
+            appl.PostId = postId;
+            appl.SightedId = applicantId;
+            _repositoryPostAppl.Add(appl);
+        }
+    }
+}

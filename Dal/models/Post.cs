@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace Dal.models
 {
+    public enum PostStatus { Open, Closed, Rejected,Approve,Finished };
     public class Post : IEntity
     {
         public Guid Id { get; set; }
+        public int FinalizedId { get; set; }
         public string Title { get; set; }
+        public PostStatus Status{get;set;}
         public string Link { get; set; }
-        public Enum Status { get; set; }
         public string Content { get; set; }
         public int SightedId { get; set; }
         public Sighted Sighted { get; set; }
