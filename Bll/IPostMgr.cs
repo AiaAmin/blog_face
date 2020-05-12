@@ -9,10 +9,10 @@ namespace Bll
         void Edit(Post post);
         void Remove(Guid id);
         void Close(Guid id);
-        void Apply(int postId, int applicantId);
-        void Reject(int postId, int applicantId);
-        void Approve(int postId, int applicantId);
-        void Finish(int postId, int finalizerId);
+        void Apply(Guid postId, Guid applicantId);
+        void Reject(Guid postId, Guid applicantId);
+        void Approve(Guid postId, Guid applicantId);
+        void Finish(Guid postId, Guid finalizerId);
         List<Post> Find(Post post, int pgNum, int pgSize);
 
     }

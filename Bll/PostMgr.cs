@@ -9,37 +9,44 @@ namespace Bll
 {
     public class PostMgr : IPostMgr
     {
-        private readonly IRepository<Post> _repositoryPost;
+        private readonly IRepository<Post> _postRepository;
 
-        private readonly IRepository<PostApplicant> _repositoryPostAppl;
+        private readonly IRepository<PostApplicant> _postApplRepository;
+
+        private readonly IRepository<Sighted> _sightedRepository;
+
         public PostMgr()
         {
             // Bad practice called "tight coupling"
-            _repositoryPost = new PgRepository<Post>();
+            _postRepository = new PgRepository<Post>();
+            _postApplRepository = new PgRepository<PostApplicant>();
+            _sightedRepository = new PgRepository<Sighted>();
         }
+
         public void Add(Post post)
         {
-            _repositoryPost.Add(post);
+            _postRepository.Add(post);
         }
 
         public void Edit(Post post)
         {
-            Post existingPost = _repositoryPost.Find().First(p => p.Id == post.Id);
+            Post existingPost = _postRepository.Find().First(p => p.Id == post.Id);
             existingPost.Title = post.Title;
-            existingPost.Content=post.Content;
+            existingPost.Content = post.Content;
             existingPost.LastModificationDate = DateTime.Now.ToUniversalTime();
-            _repositoryPost.Update();
+            _postRepository.Update();
         }
 
         public void Remove(Guid id)
         {
-            Post existingPost = _repositoryPost.Find().First(p => p.Id == id);
-            _repositoryPost.Delete(existingPost);
+            Post existingPost = _postRepository.Find().First(p => p.Id == id);
+            _postRepository.Delete(existingPost);
         }
+
         public List<Post> Find(Post post)
         {
-            var q = _repositoryPost.Find();
-            if (post.Id !=null)
+            var q = _postRepository.Find();
+            if (post.Id != null)
             {
                 return q.Where(p => p.Id == post.Id).ToList();
             }
@@ -48,6 +55,7 @@ namespace Bll
             {
                 q = q.Where(p => p.Title.Contains(post.Title));
             }
+
             if (post.Content.Length > 0)
             {
                 q = q.Where(p => p.Content.Contains(post.Content));
@@ -56,16 +64,64 @@ namespace Bll
 
             return q.ToList();
         }
+
         public void Close(Guid id)
         {
-            Post existingPost = _repositoryPost.Find().First(p => p.Id == id); //post
+            // get the targeted post
+            Post existingPost = _postRepository.Find().First(p => p.Id == id);
+
+            // update status flag to be closed
             existingPost.Status = PostStatus.Closed;
-            _repositoryPost.Update();
+            _postRepository.Update();
         }
-        public void Reject(int postId, int applicantId)
+
+        public void Reject(Guid postId, Guid applicantId)
         {
-            throw new NotImplementedException();
+            PostApplicant postApplicant = _postApplRepository.Find()
+                .FirstOrDefault(p => p.PostId == postId && p.SightedId == applicantId);
+            if (postApplicant == null)
+            {
+                throw new Exception("application not found");
+            }
+
+            postApplicant.Status = PostApplicantStatus.Rejected;
+            _postApplRepository.Update();
         }
+
+        public void Apply(Guid postId, Guid applicantId)
+        {
+            // validation
+            // check postId existance 
+            Post post = _postRepository.Find().FirstOrDefault(p => p.Id == postId);
+            if (post == null)
+            {
+                throw new Exception("post not found");
+            }
+
+            // check sightedId existance
+            Sighted applicant = _sightedRepository.Find().FirstOrDefault(p => p.UserId == applicantId);
+            if (applicant == null)
+            {
+                throw new Exception("applicant not found");
+            }
+
+            // check postApplicant existance
+            PostApplicant postAppl = _postApplRepository.Find()
+                .FirstOrDefault(p => p.PostId == postId && p.SightedId == applicantId);
+            if (postAppl == null)
+            {
+                throw new Exception("applicant is already applied to post");
+            }
+
+            // add a new applicant
+            PostApplicant appl = new PostApplicant();
+            appl.PostId = postId;
+            appl.SightedId = applicantId;
+            appl.Status = PostApplicantStatus.Applied;
+            _postApplRepository.Add(appl);
+        }
+
+
         public void Finish(int postId, int finalizerId)
         {
             throw new NotImplementedException();
@@ -73,20 +129,30 @@ namespace Bll
 
         public List<Post> Find(Post post, int pgNum, int pgSize)
         {
-            throw new NotImplementedException();
+            IQueryable<Post> q = _postRepository.Find();
+
+            if (post.Title != "")
+            {
+                q = q.Where(p => p.Title.Contains(post.Title));
+            }
+
+            if (post.Content != "")
+            {
+                q = q.Where(p => p.Content.Contains(post.Content));
+            }
+
+            q = q.Where(p => p.Status == post.Status);
+
+            // paging
+            int skipped = (pgNum - 1) * pgSize;
+            q = q.Skip(skipped).Take(pgSize);
+
+            return q.ToList();
         }
 
         public void Approve(int postId, int applicantId)
         {
             throw new NotImplementedException();
-        }
-
-        public void Apply(int postId, int applicantId)
-        {
-            PostApplicant appl = new PostApplicant();
-            appl.PostId = postId;
-            appl.SightedId = applicantId;
-            _repositoryPostAppl.Add(appl);
         }
     }
 }
