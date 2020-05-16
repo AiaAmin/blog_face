@@ -8,7 +8,7 @@ namespace Dal.models
     public class Post : IEntity
     {
         public Guid Id { get; set; }
-        public int FinalizedId { get; set; }
+        public Guid FinalizedId { get; set; }
         public string Title { get; set; }
         public PostStatus Status{get;set;}
         public string Link { get; set; }
@@ -18,6 +18,8 @@ namespace Dal.models
         public int BlindId { get; set; }
         public Blind Blind { get; set; }
         public List<PostApplicant> PostApplicants { get; set; }
+        // todo: add post time
+        
         public DateTime CreationDate { get; set; }
         public Guid OwnerId { get; set; }
         public DateTime LastModificationDate { get; set; }

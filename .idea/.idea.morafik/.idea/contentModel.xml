@@ -16,9 +16,13 @@
         <e p="Bll.csproj" t="IncludeRecursive" />
         <e p="CityMgr.cs" t="Include" />
         <e p="ICityMgr.cs" t="Include" />
+        <e p="ILanguageMgr.cs" t="Include" />
+        <e p="IMeetingMgr.cs" t="Include" />
         <e p="IPostMgr.cs" t="Include" />
         <e p="IUserManager.cs" t="Include" />
         <e p="IUserMgr.cs" t="Include" />
+        <e p="LanguageMgr.cs" t="Include" />
+        <e p="MeetingMgr.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">

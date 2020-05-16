@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Dal.models
 {
+    public enum MeetingStatus { Started, Finished };
     public class Meeting : IEntity
     {
         [Key] public Guid PostId { get; set; }
         public Post Post { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+        public MeetingStatus Status { get; set; }
         public string Place { get; set; }
         public int CityId { get; set; }
         public City City { get; set; }
