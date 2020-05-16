@@ -10,11 +10,13 @@ namespace Bll
     public class LanguageMgr : ILanguageMgr
     {
         private readonly IRepository<Language> _repository;
+
         public LanguageMgr()
         {
             // Bad practice called "tight coupling"
             _repository = new PgRepository<Language>();
         }
+
         public void Add(Language language)
         {
             _repository.Add(language);
@@ -22,9 +24,9 @@ namespace Bll
 
         public void Edit(Language language)
         {
-            Language existingLanguage = _repository.Find().First(p=>p.Id==language.Id);
-            existingLanguage.Name=language.Name;
-            existingLanguage.LastModificationDate=DateTime.Now.ToUniversalTime();
+            Language existingLanguage = _repository.Find().First(p => p.Id == language.Id);
+            existingLanguage.Name = language.Name;
+            existingLanguage.LastModificationDate = DateTime.Now.ToUniversalTime();
             _repository.Update();
         }
 
@@ -38,7 +40,8 @@ namespace Bll
 
             if (language.Name.Length > 0)
             {
-                q = q.Where(p => p.Name.Contains(language.Name));
+                q = q.Where(p => p.Name.Contains(language.Name)); // like
+                // q = q.Where(p => p.Name == language.Name); // where
             }
 
             return q.ToList();
@@ -46,7 +49,7 @@ namespace Bll
 
         public void Remove(int id)
         {
-            Language existingLanguage=_repository.Find().First(p=>p.Id==id);
+            Language existingLanguage = _repository.Find().First(p => p.Id == id);
             _repository.Delete(existingLanguage);
         }
     }
