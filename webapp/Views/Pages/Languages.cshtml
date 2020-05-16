@@ -1,0 +1,18 @@
+@model List<Dal.models.Language>
+<div>
+    <input id="newLang" placeholder="Language" type="text"/>
+    <button id="addLang" class="myAia">Add</button>
+</div>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    @foreach (var lang in Model)
+    {
+        <tr>
+            <td>
+                @lang.Name
+            </td>
+        </tr>
+    }
+</table>

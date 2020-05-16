@@ -24,6 +24,7 @@ namespace Bll
 
             /****Using bll*****/
             ILanguageMgr langMngr = new LanguageMgr();
+            
 
             // add
             //langMngr.Add(new Language() {Name = "Italian"});
