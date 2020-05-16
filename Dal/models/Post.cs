@@ -8,7 +8,7 @@ namespace Dal.models
     public class Post : IEntity
     {
         public Guid Id { get; set; }
-        public int FinalizedId { get; set; }
+        public Guid FinalizedId { get; set; }
         public string Title { get; set; }
         public PostStatus Status{get;set;}
         public string Link { get; set; }

@@ -61,7 +61,6 @@ namespace Bll
                 q = q.Where(p => p.Content.Contains(post.Content));
             }
 
-
             return q.ToList();
         }
 
@@ -120,13 +119,6 @@ namespace Bll
             appl.Status = PostApplicantStatus.Applied;
             _postApplRepository.Add(appl);
         }
-
-
-        public void Finish(int postId, int finalizerId)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Post> Find(Post post, int pgNum, int pgSize)
         {
             IQueryable<Post> q = _postRepository.Find();
@@ -150,9 +142,25 @@ namespace Bll
             return q.ToList();
         }
 
-        public void Approve(int postId, int applicantId)
+        public void Approve(Guid postId, Guid applicantId)
         {
-            throw new NotImplementedException();
+            PostApplicant postApplicant = _postApplRepository.Find()
+                .FirstOrDefault(p => p.PostId == postId && p.SightedId == applicantId);
+            if (postApplicant == null)
+            {
+                throw new Exception("application not found");
+            }
+            postApplicant.Status = PostApplicantStatus.Approved;
+            _postApplRepository.Update();
+        }
+        public void Finish(Guid postId, Guid finalizerId)
+        {
+            // get the targeted post
+            Post existingPost = _postRepository.Find().First(p => p.Id == postId && p.FinalizedId == finalizerId);
+
+            // update status flag to be Finished
+            existingPost.Status = PostStatus.Finished;//post -->sighted & blind=user
+            _postRepository.Update();
         }
     }
 }
