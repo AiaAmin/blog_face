@@ -43,21 +43,22 @@ namespace webapp.Controllers
             return Json(cities);
         }
         // GET: Skills/Details
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            
+            if (id-1 == null)
             {
                 return NotFound();
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             List<City> cities = cmgr.Find(new City());
-            if (cities[0] == null)
+            if (cities[id-1] == null)
             {
                 return NotFound();
             }
 
-            return View(cities[0]);
+            return View(cities[id-1]);
         }
 
     }
