@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bll;
 using Dal.models;
 using Microsoft.AspNetCore.Razor.Language;
+using Newtonsoft.Json;
 
 namespace webapp.Controllers
 {
@@ -33,5 +34,31 @@ namespace webapp.Controllers
             return View(city);
 
         }
+        public JsonResult listByJson()
+        {
+            List<City> cities = new List<City>() {
+                new City() {Name="gharda2a",CreationDate=DateTime.Now },
+                new City(){Name="Luxor",CreationDate=DateTime.Now}
+               };
+            return Json(cities);
+        }
+        // GET: Skills/Details
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            List<City> cities = cmgr.Find(new City());
+            if (cities[0] == null)
+            {
+                return NotFound();
+            }
+
+            return View(cities[0]);
+        }
+
     }
 }

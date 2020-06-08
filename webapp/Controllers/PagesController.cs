@@ -11,17 +11,13 @@ namespace webapp.Controllers {
             mgr = new LanguageMgr ();
         }
 
-        public IActionResult Home () {
-            return View ();
-        }
+
 
         public IActionResult Services () {
             return View ();
         }
 
-        public IActionResult Aia () {
-            return View ();
-        }
+
         public IActionResult AddLang () {
             List<Language> langs = mgr.Find (new Language ());
             return View (langs);
@@ -40,21 +36,5 @@ namespace webapp.Controllers {
             return Json (newLang);
         }
 
-        // public IActionResult Index () {
-        //     return View ();
-        // }
-
-        // [HttpGet]
-        // public JsonResult Details () {
-        //     //Creating List    
-        //     List<Language> langs = new List<Language> () {
-        //         //Adding records to list   
-        //         new Language { Id = 3, Name = "german" },
-        //         new Language { Id = 4, Name = "chinese" }
-        //     };
-
-        //     //return list as Json    
-        //     return Json (langs, JsonRequestBehavior.AllowGet);
-        // }
     }
 }

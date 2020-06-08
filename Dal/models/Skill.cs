@@ -5,6 +5,7 @@ namespace Dal.models
 {
     public class Skill : IEntity
     {
+        public Skill() { Name = ""; }
         public int Id { get; set; }
         public string Name { get; set; }
         public List<SightedSkill> SightedSkills { get; set; }
