@@ -6,6 +6,7 @@ namespace Dal.models
 {
     public class City : IEntity
     {
+        public City() { Name = ""; }
         [Key] public int Id { get; set; }
         public string Name { get; set; }
         public List<User> Users { get; set; }

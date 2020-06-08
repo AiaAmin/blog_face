@@ -12,12 +12,18 @@ namespace Bll
         {
             Console.WriteLine("Hello Aia!");
             IRepository<Language> langRepo = new PgRepository<Language>();
-
+            IRepository<City> cityRepo = new PgRepository<City>();
             /****Using repo*****/
             // insert
-            //langRepo.Add(new Language() {Name = "Arabic"});
-            //langRepo.Add(new Language() {Name = "English"});
-            //langRepo.Add(new Language() {Name = "French"});
+            langRepo.Add(new Language() {Name = "Arabic"});
+            langRepo.Add(new Language() {Name = "English"});
+            langRepo.Add(new Language() {Name = "French"});
+           // -----------------------------------------------------------------
+           cityRepo.Add(new City() { Name="Cairo"});
+            cityRepo.Add(new City() { Name = "Alex" });
+            cityRepo.Add(new City() { Name = "Kafr Elsheikh" });
+            cityRepo.Add(new City() { Name = "Aswan" });
+            cityRepo.Add(new City() { Name = "Giza" });
 
             // find
             //langRepo.Find()

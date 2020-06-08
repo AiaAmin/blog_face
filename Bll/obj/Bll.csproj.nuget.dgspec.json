@@ -1,32 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj": {}
+    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj": {}
   },
   "projects": {
-    "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj": {
+    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj",
+        "projectUniqueName": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
         "projectName": "Bll",
-        "projectPath": "/Users/ayman/RiderProjects/blogSol/Bll/Bll.csproj",
-        "packagesPath": "/Users/ayman/.nuget/packages/",
-        "outputPath": "/Users/ayman/RiderProjects/blogSol/Bll/obj/",
+        "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
+        "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "/Users/ayman/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
-                "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj"
+              "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj": {
+                "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj"
               }
             }
           }
@@ -54,26 +60,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
+    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj",
+        "projectUniqueName": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj",
-        "packagesPath": "/Users/ayman/.nuget/packages/",
-        "outputPath": "/Users/ayman/RiderProjects/blogSol/Dal/obj/",
+        "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj",
+        "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "/Users/ayman/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -114,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

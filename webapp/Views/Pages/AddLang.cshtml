@@ -1,0 +1,137 @@
+@model List<Dal.models.Language>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body>
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+<h1 id="demo"></h1>
+  <input type="text" id="languuagetest"  />
+  <input type="text" id="languuage" placeholder="Add Language"  />
+<div>  
+  <label>Create Sample User JSON Data and send it to controller</label><br/><br />  
+  <input type="button" id="btnUpdateUserDetail" value="Update User Detail" onclick="UpdateUserDetail();"/>  
+</div>  
+  <button onclick="myFunction()" class="dropbtn">Suggestion</button>
+  <div id="myDropdown" class="dropdown-content">
+
+    @foreach (var lang in Model)
+    {
+            <a href="#home">@lang.Name</a>
+    }
+  </div>
+</div>
+
+<script>
+  //****************************************************************************
+
+      function UpdateUserDetail() {  
+        var usersJson = GetSampleUsersList();  
+        var getReportColumnsParams = {  
+            "usersJson": usersJson  
+        };  
+        $.ajax({  
+            type: "POST",  
+            traditional: true,  
+            async: false,  
+            cache: false,  
+            url: '/JsonDemo/UpdateUsersDetail',  
+            context: document.body,  
+            data: getReportColumnsParams,  
+            success: function (result) {  
+                alert(result);  
+            },  
+            error: function (xhr) {  
+                //debugger;  
+                console.log(xhr.responseText);  
+                alert("Error has occurred..");  
+            }  
+        });  
+    }  
+    function GetSampleUsersList() {  
+        var userDetails = {};  
+        var usersList = [];  
+        for (var i = 1; i <= 3; i++) {  
+            userDetails["UserId"] = i;  
+            userDetails["UserName"] = "User- " + i;  
+            userDetails["Company"] = "Company- " + i;  
+            usersList.push(userDetails);  
+        }  
+        return JSON.stringify(usersList);  
+    }  
+
+
+  
+  //****************************************************************************
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+var customerName = prompt("Please enter your name");
+
+if (customerName!= null) {
+
+    document.getElementById("demo").innerHTML ="Hello " + customerName + "! How are you today?";
+}
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+// &777777777      
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

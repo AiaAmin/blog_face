@@ -2,7 +2,8 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\Aia\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Aia\\.nuget\\packages"
+      "C:\\Users\\Aia\\.nuget\\packages",
+      "C:\\Microsoft\\Xamarin\\NuGet"
     ]
   }
 }
