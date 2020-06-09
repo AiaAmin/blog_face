@@ -60,6 +60,26 @@ namespace webapp.Controllers
 
             return View(cities[id-1]);
         }
+        //create city
+        //Get
+        public IActionResult create()
+        {
+            //if i have another elements in another tables
+            return View();
+        }
 
+        //post
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(include : "Id,Name,CreationDate,OwnerId,LastModificationDate,ModifierId")] City city) 
+        {
+            if (ModelState.IsValid)
+            {
+                cmgr.Add(city);
+                return RedirectToAction("ViewCity");
+            }
+            return View(city);
+        }
     }
 }
