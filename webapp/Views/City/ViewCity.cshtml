@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Dal.models.City>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Search","City"))
 {
     <div>
         <label>City</label>
@@ -11,7 +11,7 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-</p>
+</p> 
 <table class="table">
     <thead>
         <tr>

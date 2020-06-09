@@ -27,12 +27,10 @@ namespace webapp.Controllers
             return View(cities);
            
         }
-        public IActionResult SearchCity(string ip)
+        public IActionResult Search(string City)
         {
-            var city = cmgr.Find(new City());
-            city.Where(p => p.Name.StartsWith(ip));
-            return View(city);
-
+            List<City>cities = cmgr.Find(new City());
+            return View(cities.Where(p => p.Name.StartsWith(City)));
         }
         public JsonResult listByJson()
         {
@@ -93,7 +91,6 @@ namespace webapp.Controllers
             {
                 return NotFound();
             }
-
             return View(cities[id]);
         }
         // POST: Cities/Edit
@@ -108,5 +105,6 @@ namespace webapp.Controllers
             }
          return View(city);
         }
+
     }
 }
