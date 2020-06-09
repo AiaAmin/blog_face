@@ -81,5 +81,32 @@ namespace webapp.Controllers
             }
             return View(city);
         }
+        // GET: city/Edit
+        public ActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            List<City> cities = cmgr.Find(new City());
+            if (cities[id] == null)
+            {
+                return NotFound();
+            }
+
+            return View(cities[id]);
+        }
+        // POST: Cities/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(include :"Id,Name,CreationDate,OwnerId,LastModificationDate,ModifierId")] City city)
+        {
+            if (ModelState.IsValid)
+            {
+                cmgr.Edit(city);
+                return RedirectToAction("ViewCity");
+            }
+         return View(city);
+        }
     }
 }
