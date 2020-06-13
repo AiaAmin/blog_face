@@ -26,21 +26,32 @@ namespace webapp.Controllers
             return View(skills);
         }
         // GET: Skills/Details
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
+            id -= 1;
             if (id == null)
             {
                 return NotFound();
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             List<Skill> skills = skmgr.Find(new Skill());
-                if (skills[0] == null)
+            foreach(Skill skill in skills)
+            {
+                if (skills[id] == null)
                 {
                     return NotFound();
                 }
 
-            return View(skills[0]);
+                return View(skills[id]);
+            }
+            return View(skills[id]);
+        }
+        //Create
+        //Get
+        public PartialViewResult _Create()
+        {
+          
+            return PartialView();
         }
 
 

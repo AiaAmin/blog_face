@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj": {}
+    "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Bll\\Bll.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj": {
+    "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Bll\\Bll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
+        "projectUniqueName": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Bll\\Bll.csproj",
         "projectName": "Bll",
-        "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\Bll.csproj",
+        "projectPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Bll\\Bll.csproj",
         "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Bll\\obj\\",
+        "outputPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Bll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj": {
-                "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj"
+              "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj": {
+                "projectPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj"
               }
             }
           }
@@ -45,6 +45,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -64,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj": {
+    "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj",
+        "projectUniqueName": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\Dal.csproj",
+        "projectPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj",
         "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aia\\Desktop\\c#\\blog_face\\Dal\\obj\\",
+        "outputPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -102,6 +108,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"

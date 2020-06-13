@@ -13,9 +13,10 @@ namespace Bll
             Console.WriteLine("Hello Aia!");
             IRepository<Language> langRepo = new PgRepository<Language>();
             IRepository<City> cityRepo = new PgRepository<City>();
+            IRepository<Skill> SkillRepo = new PgRepository<Skill>();
             /****Using repo*****/
             // insert
-            langRepo.Add(new Language() {Name = "Arabic"});
+           /* langRepo.Add(new Language() {Name = "Arabic"});
             langRepo.Add(new Language() {Name = "English"});
             langRepo.Add(new Language() {Name = "French"});
            // -----------------------------------------------------------------
@@ -23,8 +24,10 @@ namespace Bll
             cityRepo.Add(new City() { Name = "Alex" });
             cityRepo.Add(new City() { Name = "Kafr Elsheikh" });
             cityRepo.Add(new City() { Name = "Aswan" });
-            cityRepo.Add(new City() { Name = "Giza" });
-
+            cityRepo.Add(new City() { Name = "Giza" });*/
+            // ------------------------------------------
+            SkillRepo.Add(new Skill() { Name = "LEADERSHIP" });
+            SkillRepo.Add(new Skill() { Name = "Good Communication" });
             // find
             //langRepo.Find()
 
