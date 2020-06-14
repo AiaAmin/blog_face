@@ -19,6 +19,7 @@
         <e p="ILanguageMgr.cs" t="Include" />
         <e p="IMeetingMgr.cs" t="Include" />
         <e p="IPostMgr.cs" t="Include" />
+        <e p="ISkillMgr.cs" t="Include" />
         <e p="IUserManager.cs" t="Include" />
         <e p="IUserMgr.cs" t="Include" />
         <e p="LanguageMgr.cs" t="Include" />
@@ -32,6 +33,7 @@
         </e>
         <e p="PostMgr.cs" t="Include" />
         <e p="Program.cs" t="Include" />
+        <e p="SkillMgr.cs" t="Include" />
       </e>
       <e p="DAL" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
@@ -93,8 +95,13 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="CitiesController.cs" t="Include" />
+          <e p="CityController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="JobsController.cs" t="Include" />
           <e p="PagesController.cs" t="Include" />
+          <e p="SighnUpController.cs" t="Include" />
+          <e p="SkillsController.cs" t="Include" />
         </e>
         <e p="models" t="Include">
           <e p="ErrorViewModel.cs" t="Include" />
@@ -112,22 +119,48 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="CityVM.cs" t="Include" />
+        </e>
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="City" t="Include">
+            <e p="create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="listByJson.cshtml" t="Include" />
+            <e p="Search.cshtml" t="Include" />
+            <e p="ViewCity.cshtml" t="Include" />
+          </e>
           <e p="home" t="Include">
             <e p="Index.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
           </e>
           <e p="Pages" t="Include">
+            <e p="_PartLang.cshtml" t="Include" />
+            <e p="AddLang.cshtml" t="Include" />
+            <e p="Aia.cshtml" t="Include" />
             <e p="Home.cshtml" t="Include" />
             <e p="Languages.cshtml" t="Include" />
             <e p="Services.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
+            <e p="_cityCreate.cshtml" t="Include" />
+            <e p="_citySearch.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_partTime.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
+          </e>
+          <e p="SighnUp" t="Include">
+            <e p="Search.cshtml" t="Include" />
+          </e>
+          <e p="Skills" t="Include">
+            <e p="_Create.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="ViewSkills.cshtml" t="Include" />
           </e>
         </e>
         <e p="webapp.csproj" t="IncludeRecursive" />
