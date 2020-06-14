@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language;
 using Newtonsoft.Json;
 
+
 namespace webapp.Controllers {
 
     public class CityController : Controller {
@@ -29,8 +30,18 @@ namespace webapp.Controllers {
                return View(cities.Where(p => p.Name.StartsWith(City)));
            }*/
 
-        public PartialViewResult CreatePartial () {
-            return PartialView ("_cityCreate");
+        [HttpPost]
+        public JsonResult Create(ViewModels.CityVM city){
+            City newCity=new City();
+            newCity.Name=city.Name;
+            cmgr.Add(newCity);
+            return Json(newCity);
+        }
+        [HttpPost]
+        public JsonResult DeleteCity(ViewModels.CityVM city){
+        List<City> cities = cmgr.Find(new City());
+        cmgr.Remove(cities.First(p => p.Id == city.Id).Id);
+        return Json(cities);
         }
         public PartialViewResult SearchPartial (string City) {
             List<City> cities = cmgr.Find (new City ());
@@ -82,22 +93,22 @@ namespace webapp.Controllers {
         }
         //create city
         //Get
-        public IActionResult create () {
-            //if i have another elements in another tables
-            return View ();
-        }
+        // public IActionResult create () {
+        //     //if i have another elements in another tables
+        //     return View ();
+        // }
 
-        //post
+        // //post
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create ([Bind (include: "Id,Name,CreationDate,OwnerId,LastModificationDate")] City city) {
-            if (ModelState.IsValid) {
-                cmgr.Add (city);
-                return RedirectToAction ("ViewCity");
-            }
-            return View (city);
-        }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public ActionResult Create ([Bind (include: "Id,Name,CreationDate,OwnerId,LastModificationDate")] City city) {
+        //     if (ModelState.IsValid) {
+        //         cmgr.Add (city);
+        //         return RedirectToAction ("ViewCity");
+        //     }
+        //     return View (city);
+        // }
         // GET: city/Edit
         public ActionResult Edit (int id) {
             if (id == null) {
