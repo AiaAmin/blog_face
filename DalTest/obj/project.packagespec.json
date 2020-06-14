@@ -34,6 +34,10 @@
           "target": "Package",
           "version": "[16.4.0, )"
         },
+        "Microsoft.jQuery.Unobtrusive.Ajax": {
+          "target": "Package",
+          "version": "[3.2.6, )"
+        },
         "Moq": {
           "target": "Package",
           "version": "[4.13.1, )"

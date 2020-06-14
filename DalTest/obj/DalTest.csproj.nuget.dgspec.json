@@ -1,38 +1,96 @@
 {
   "format": 1,
   "restore": {
-    "f:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj": {}
+    "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj": {}
   },
   "projects": {
-    "f:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj": {
+    "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj",
-        "projectName": "DalTest",
-        "projectPath": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj",
-        "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
-        "outputPath": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\obj\\",
+        "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj",
+        "projectName": "Dal",
+        "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj",
+        "packagesPath": "/Users/ayman/.nuget/packages/",
+        "outputPath": "/Users/ayman/RiderProjects/blogSol/Dal/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/ayman/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj",
+        "projectName": "DalTest",
+        "projectPath": "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj",
+        "packagesPath": "/Users/ayman/.nuget/packages/",
+        "outputPath": "/Users/ayman/RiderProjects/blogSol/DalTest/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ayman/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj": {
-                "projectPath": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj"
+              "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
+                "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj"
               }
             }
           }
@@ -82,77 +140,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj",
-        "projectName": "Dal",
-        "projectPath": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj",
-        "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
-        "outputPath": "f:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netcoreapp3.1"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netcoreapp3.1": {
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.jQuery.Unobtrusive.Ajax": {
-              "target": "Package",
-              "version": "[3.2.6, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[3.1.3, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
         }
       }
     }
