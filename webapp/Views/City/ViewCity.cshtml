@@ -85,30 +85,37 @@ $(function(){
         var r=confirm("Are you sure you want to delete this item");
             if(r==true){
                 console.log("in deelllllll");
-                console.log(e);
-                var cityId=$(e).attr("data-city-id");
+                console.log(e.currentTarget);
                 
+                var cityId=$(e.currentTarget).attr("data-city-id");
+                console.log(cityId);
                 // todo: send delete ajax call
-                
+                 @* $.post("/city/DeleteCity",{id:cityId},function(data,status){
+                     console.log(data);
+                     console.log(data.id);
+                     console.log(status); *@
+                     /*DELETE*/
+                    $.ajax({
+                        url: '/city/DeleteCity',
+                        dataType: "json",
+                        type: "DELETE",
+                        data: JSON.stringify({id: cityId}),
+                        async: true,
+                        processData: false,
+                        cache: false,
+                        success: function (data) {
+                            alert(data);
+                        },
+                        error: function (xhr) {
+                            alert('error');
+                        }
+                   
+                    //-------------------------------------------------------
+                });
                 // rempve row
-                $(e).remove();
-           var cc= $(".tROW").html();
-                console.log(cc); 
-                console.log(cc[4]);
-                console.log($(".tROW").attr("td")); 
-            }
-             
-            @* else{
-                 $(".tROW")
-       $(this).find('td').each(function(){
-           var $data = $(this).html();
-           alert($data);
-            if ($data == "N/A") {
-            alert(true);    
-           };
-    }); 
+                $(e.currentTarget).parent().parent().remove();
 
-            } *@
+            }
 });
 });
 </script>

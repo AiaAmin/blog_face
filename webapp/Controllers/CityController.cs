@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language;
 using Newtonsoft.Json;
 
-
 namespace webapp.Controllers {
 
     public class CityController : Controller {
@@ -31,17 +30,18 @@ namespace webapp.Controllers {
            }*/
 
         [HttpPost]
-        public JsonResult Create(ViewModels.CityVM city){
-            City newCity=new City();
-            newCity.Name=city.Name;
-            cmgr.Add(newCity);
-            return Json(newCity);
+        public JsonResult Create (ViewModels.CityVM city) {
+            City newCity = new City ();
+            newCity.Name = city.Name;
+            cmgr.Add (newCity);
+            return Json (newCity);
         }
-        [HttpPost]
-        public JsonResult DeleteCity(ViewModels.CityVM city){
-        List<City> cities = cmgr.Find(new City());
-        cmgr.Remove(cities.First(p => p.Id == city.Id).Id);
-        return Json(cities);
+
+        [HttpDelete]
+        public JsonResult DeleteCity (int id) {
+            List<City> cities = cmgr.Find (new City ());
+            cmgr.Remove ((cities.First (p => p.Id == id)).Id);
+            return Json (cities);
         }
         public PartialViewResult SearchPartial (string City) {
             List<City> cities = cmgr.Find (new City ());
