@@ -2,10 +2,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<hr/>
+<hr />
 <h1 id="tesst"> </h1>
 @* @Html.Partial("_partTime")
-@Html.Partial("_cityCreate") *@
+    @Html.Partial("_cityCreate") *@
 
 <div class="row">
     <div class="col-md-4">
@@ -16,55 +16,85 @@
             <input class="form-control" type="text" id="city-name" value="">
         </div>
         <div class="form-group">
-            <button id="create-city">Create</button>
+            <button id="create-city" class="btn btn-success">Create</button>
             @* <input type="submit" value="Create" class="btn btn-primary" id="Testj"/> *@
         </div>
 
     </div>
 </div>
-<hr/>
+<hr />
 <div id="PartCity">
     <table>
         <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
         </thead>
         <tbody class="table">
-        @foreach (var item in Model)
-        {
-            <tr class="tROW">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name, new {@class = "ussername"}))
-                </td>
-                <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
-                <button class="delete-city btn btn-danger" data-city-id="@item.Id">Delete</button>
-                <td>
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr class="tROW">
+                    <td id="EditId">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td id="EditName">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        <span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning" data-city-id="@item.Id">Edit</button></span>
+                        <button type="button" class="Details-of-city btn btn-info " data-toggle="modal" data-target="#myModal" data-city-id="@item.Id">Details</button>
+                        <button type="button" class="delete-city btn btn-danger" data-city-id="@item.Id">Delete</button>
+                    <td>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
+    <div id="snackbar">The city is created..</div>
+
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Details of </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="DetailsCity">This is a small modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
+@* create City *@
 
 <script type="text/javascript">
 $(function(){
     $("#create-city").click(function(){
             var cityName=$("#city-name").val();
+             // Get the snackbar DIV
+            var x = document.getElementById("snackbar");
+
+            // Add the "show" class to DIV
+            x.className = "show";
+
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
             $.post("/city/Create",{name:cityName},function(data,status){
                 console.log(status);
                 console.log(data);
@@ -72,31 +102,87 @@ $(function(){
                 $(".table").append("<tr><td>"+
                         data.id+
                     "</td><td>"+data.name+
-                    "</td><td>"+
-                        '<td><a href="/City/Edit/'+data.id+
-                        '">Edit</a> |<a href="/City/Details/'+data.id+
-                        '">Details</a> |<a href="/City/Delete/'+
-                        data.id+'">Delete</a></td>'
+                    "</td><td>"+'<button type="button" class="Details-of-city btn btn-info " data-toggle="modal" data-target="#myModal" data-city-id=data.id>Details</button>'+
+                    '<button class="delete-city btn btn-danger" data-city-id=data.id>Delete</button>'+
                     +"</td></tr>");
 
   });
-            });     
+            });
+@* Edit *@
+$(".Edit-city").click(
+    function(e){
+        var cityId = $(e.currentTarget).attr("data-city-id");
+        console.log(cityId);
+        $.ajax({
+            url: '/city/EditCity/'+cityId,
+            dataType: "json",
+            type: "GET",
+            data: JSON.stringify({id: cityId}),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                $("#SubmitEdit").html('<button class="btn btn-success" id="SubmitEditBtn">Submit</button>  <button type="button" class="Cancel-Edit btn btn-danger">Cancel</button>');
+                $("#EditId").text(data.id);
+                $("#EditName").html('<input type="text" class="form-control" id="cty" placeholder="City Name" >');
+                $("#cty").attr("placeholder", data.name);
+                $(".Cancel-Edit").click(function (e) {
+                    $(".Cancel-Edit").remove();
+                    $("#SubmitEditBtn").remove();
+                    $("#SubmitEdit").html('<span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning">Edit</button></span>');
+                    $("#EditName").html("<h6>" + data.name + "</h6>");
+                });
+                $("#SubmitEditBtn").click(function (e) {
+                    var cityNameEdited = $("#cty").val();
+                    $.post("/city/EditCity", { Id: data.id, Name: cityNameEdited }, function (data, status) {
+                        $(".Cancel-Edit").remove();
+                        $("#SubmitEditBtn").remove();
+                        $("#SubmitEdit").html('<span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning">Edit</button></span>');
+                        $("#EditName").html("<h6>" + data.name + "</h6>");
+                    });
+
+                });
+
+                     },
+            error: function (xhr) {
+                alert('error');
+            }
+});
+});
+@* finish details *@
+@* Details *@
+$( ".Details-of-city" ).click(
+  function(e) {
+    var cityId=$(e.currentTarget).attr("data-city-id");
+    console.log(cityId);
+        $.ajax({
+        url: '/city/DetailsCity/'+cityId,
+        dataType: "json",
+        type: "GET",
+        data: JSON.stringify({id: cityId}),
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (data) {
+            $(".modal-title").text("Details of "+data.name);
+            $("#DetailsCity").text("Id : "+data.id+"\n Name :"+data.name);
+        },
+        error: function (xhr) {
+            alert('error');
+        }
+});
+});
+@* finish details *@
     $(".delete-city").click(function(e){
         var r=confirm("Are you sure you want to delete this item");
             if(r==true){
-                console.log("in deelllllll");
                 console.log(e.currentTarget);
-                
+
                 var cityId=$(e.currentTarget).attr("data-city-id");
                 console.log(cityId);
-                // todo: send delete ajax call
-                 @* $.post("/city/DeleteCity",{id:cityId},function(data,status){
-                     console.log(data);
-                     console.log(data.id);
-                     console.log(status); *@
                      /*DELETE*/
                     $.ajax({
-                        url: '/city/DeleteCity',
+                        url: '/city/DeleteCity/'+cityId,
                         dataType: "json",
                         type: "DELETE",
                         data: JSON.stringify({id: cityId}),
@@ -105,11 +191,12 @@ $(function(){
                         cache: false,
                         success: function (data) {
                             alert(data);
+
                         },
                         error: function (xhr) {
                             alert('error');
                         }
-                   
+
                     //-------------------------------------------------------
                 });
                 // rempve row
@@ -119,3 +206,22 @@ $(function(){
 });
 });
 </script>
+@* $("#SubmitEditBtn").click(function(e){
+    alert("Value: " + $("#cty").val());
+            $.ajax({
+                   url: '/city/EditCityPut/'+cityId,
+                   dataType: "json",
+                   type: "PUT",
+                   data: JSON.stringify({id: cityId}),
+                   async: true,
+                   processData: false,
+                   cache: false,
+                   success: function (data) {
+                    $(e.currentTarget).remove();
+                   $("#SubmitEditBtn").html('<button class="btn btn-warning" id="SubmitEditBtn">Edit</button>');
+                   $("#EditName").html(data.name);
+                   },
+                   error: function (xhr) {
+                       alert('error');
+                   }
+           });*@

@@ -36,9 +36,42 @@ namespace webapp.Controllers {
             cmgr.Add (newCity);
             return Json (newCity);
         }
+        //Edit
+        [HttpPost]
+        public JsonResult EditCity([Bind(include: "Id,Name")] City city)
+        {
+            cmgr.Edit(city);
+            return Json(city);
+        }
+        [HttpGet]
+        public JsonResult EditCity (int id) {
+            Console.WriteLine(id);
+            List<City> cities = cmgr.Find(new City());
+            return Json(cities.First(p => p.Id == id));
+        }
+        /*
+
+        [HttpPut]
+        public JsonResult EditCityPut (ViewModels.CityVM city) {
+            Console.WriteLine (city.Id);
+            List<City> cities = cmgr.Find (new City ());
+            City editedCity = cities.First (p => p.Id == city.Id);
+            cmgr.Edit (editedCity);
+            return Json (editedCity);
+        }*/
+        //Details
+        [HttpGet]
+        public JsonResult DetailsCity (int id) {
+            Console.WriteLine (id);
+            List<City> cities = cmgr.Find (new City ());
+            return Json (cities.First (p => p.Id == id));
+        }
+
+        //-------------------------------
 
         [HttpDelete]
         public JsonResult DeleteCity (int id) {
+            Console.WriteLine (id);
             List<City> cities = cmgr.Find (new City ());
             cmgr.Remove ((cities.First (p => p.Id == id)).Id);
             return Json (cities);
@@ -46,13 +79,6 @@ namespace webapp.Controllers {
         public PartialViewResult SearchPartial (string City) {
             List<City> cities = cmgr.Find (new City ());
             return PartialView ("_citySearch", cities.Where (p => p.Name.StartsWith (City)));
-        }
-        public JsonResult listByJson () {
-            List<City> cities = new List<City> () {
-                new City () { Name = "gharda2a", CreationDate = DateTime.Now },
-                new City () { Name = "Luxor", CreationDate = DateTime.Now }
-            };
-            return Json (cities);
         }
         // GET: City/Details
         public ActionResult Details (int id) {
@@ -91,25 +117,7 @@ namespace webapp.Controllers {
             cmgr.Remove (id);
             return RedirectToAction ("viewCity");
         }
-        //create city
-        //Get
-        // public IActionResult create () {
-        //     //if i have another elements in another tables
-        //     return View ();
-        // }
 
-        // //post
-
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public ActionResult Create ([Bind (include: "Id,Name,CreationDate,OwnerId,LastModificationDate")] City city) {
-        //     if (ModelState.IsValid) {
-        //         cmgr.Add (city);
-        //         return RedirectToAction ("ViewCity");
-        //     }
-        //     return View (city);
-        // }
-        // GET: city/Edit
         public ActionResult Edit (int id) {
             if (id == null) {
                 return NotFound ();
