@@ -7,6 +7,7 @@ using Dal.models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language;
 using Newtonsoft.Json;
+using X.PagedList;
 
 namespace webapp.Controllers {
 
@@ -18,9 +19,12 @@ namespace webapp.Controllers {
         public CityController () {
             cmgr = new CityMgr ();
         }
-        public IActionResult ViewCity () {
+        public IActionResult ViewCity (int? page) {
+            var pageNumber = page ?? 1; // if no page is specified, default to the first page (1)
+            int pageSize = 5; // Get 25 students for each requested page.
             List<City> cities = cmgr.Find (new City ());
-            return View (cities);
+            var pageCities=cities.ToPagedList(pageNumber, pageSize);
+            return View (pageCities);
 
         }
         /*   public IActionResult Search(string City)

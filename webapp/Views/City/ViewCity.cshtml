@@ -1,12 +1,11 @@
-﻿@model IEnumerable<Dal.models.City>
+﻿@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
+@using X.PagedList;
+@model IEnumerable<Dal.models.City>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <hr />
 <h1 id="tesst"> </h1>
-@* @Html.Partial("_partTime")
-    @Html.Partial("_cityCreate") *@
-
 <div class="row">
     <div class="col-md-4">
 
@@ -17,13 +16,21 @@
         </div>
         <div class="form-group">
             <button id="create-city" class="btn btn-success">Create</button>
-            @* <input type="submit" value="Create" class="btn btn-primary" id="Testj"/> *@
         </div>
 
     </div>
 </div>
 <hr />
 <div id="PartCity">
+    <!-- paging control for navigation to the previous page, next page, etc -->
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("ViewCity", new { page = page }),
+        new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        {
+            DisplayItemSliceAndTotal = false,
+            ContainerDivClasses = new[] { "navigation" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+        });
     <table>
         <thead>
             <tr>
@@ -48,7 +55,6 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         <span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning" data-city-id="@item.Id">Edit</button></span>
                         <button type="button" class="Details-of-city btn btn-info " data-toggle="modal" data-target="#myModal" data-city-id="@item.Id">Details</button>
                         <button type="button" class="delete-city btn btn-danger" data-city-id="@item.Id">Delete</button>
@@ -58,6 +64,7 @@
             }
         </tbody>
     </table>
+
     <div id="snackbar">The city is created..</div>
 
     <div class="container">
@@ -206,22 +213,3 @@ $( ".Details-of-city" ).click(
 });
 });
 </script>
-@* $("#SubmitEditBtn").click(function(e){
-    alert("Value: " + $("#cty").val());
-            $.ajax({
-                   url: '/city/EditCityPut/'+cityId,
-                   dataType: "json",
-                   type: "PUT",
-                   data: JSON.stringify({id: cityId}),
-                   async: true,
-                   processData: false,
-                   cache: false,
-                   success: function (data) {
-                    $(e.currentTarget).remove();
-                   $("#SubmitEditBtn").html('<button class="btn btn-warning" id="SubmitEditBtn">Edit</button>');
-                   $("#EditName").html(data.name);
-                   },
-                   error: function (xhr) {
-                       alert('error');
-                   }
-           });*@
