@@ -75,6 +75,11 @@ $(function(){
             success: function (data) {
                 console.log("in ajax get response");
                 console.log(data);
+                data.each(function(c) {
+                    var row='<tr class="tROW"><td id="EditId">'+c.id+'</td><td id="EditName">'+c.name+'</td><td><span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning" data-city-id="@item.Id">Edit</button></span><button type="button" class="Details-of-city btn btn-info " data-toggle="modal" data-target="#myModal" data-city-id="@item.Id">Details</button><button type="button" class="delete-city btn btn-danger" data-city-id="@item.Id">Delete</button><td></td></tr>'
+                  console.log(row);
+                  $('#city-tbl-body').append(row)
+                });
             },
             error: function (xhr) {
                 alert('error');
