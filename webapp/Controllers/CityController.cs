@@ -9,23 +9,22 @@ using Microsoft.AspNetCore.Razor.Language;
 using Newtonsoft.Json;
 using X.PagedList;
 
-namespace webapp.Controllers {
-
-    public class CityController : Controller {
+namespace webapp.Controllers
+{
+    public class CityController : Controller
+    {
         //call Data
         private ICityMgr cmgr;
 
         //for security
-        public CityController () {
-            cmgr = new CityMgr ();
+        public CityController()
+        {
+            cmgr = new CityMgr();
         }
-        public IActionResult ViewCity (int? page) {
-            var pageNumber = page ?? 1; // if no page is specified, default to the first page (1)
-            int pageSize = 5; // Get 25 students for each requested page.
-            List<City> cities = cmgr.Find (new City ());
-            var pageCities=cities.ToPagedList(pageNumber, pageSize);
-            return View (pageCities);
 
+        public IActionResult ViewCity()
+        {
+            return View();
         }
         /*   public IActionResult Search(string City)
            {
@@ -33,13 +32,21 @@ namespace webapp.Controllers {
                return View(cities.Where(p => p.Name.StartsWith(City)));
            }*/
 
-        [HttpPost]
-        public JsonResult Create (ViewModels.CityVM city) {
-            City newCity = new City ();
-            newCity.Name = city.Name;
-            cmgr.Add (newCity);
-            return Json (newCity);
+        public JsonResult List(int pageNumber, int pageSize)
+        {
+            var cities = cmgr.Find(new City()).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            return Json(cities);
         }
+
+        [HttpPost]
+        public JsonResult Create(ViewModels.CityVM city)
+        {
+            City newCity = new City();
+            newCity.Name = city.Name;
+            cmgr.Add(newCity);
+            return Json(newCity);
+        }
+
         //Edit
         [HttpPost]
         public JsonResult EditCity([Bind(include: "Id,Name")] City city)
@@ -47,12 +54,15 @@ namespace webapp.Controllers {
             cmgr.Edit(city);
             return Json(city);
         }
+
         [HttpGet]
-        public JsonResult EditCity (int id) {
+        public JsonResult EditCity(int id)
+        {
             Console.WriteLine(id);
             List<City> cities = cmgr.Find(new City());
             return Json(cities.First(p => p.Id == id));
         }
+
         /*
 
         [HttpPut]
@@ -65,83 +75,105 @@ namespace webapp.Controllers {
         }*/
         //Details
         [HttpGet]
-        public JsonResult DetailsCity (int id) {
-            Console.WriteLine (id);
-            List<City> cities = cmgr.Find (new City ());
-            return Json (cities.First (p => p.Id == id));
+        public JsonResult DetailsCity(int id)
+        {
+            Console.WriteLine(id);
+            List<City> cities = cmgr.Find(new City());
+            return Json(cities.First(p => p.Id == id));
         }
 
         //-------------------------------
 
         [HttpDelete]
-        public JsonResult DeleteCity (int id) {
-            Console.WriteLine (id);
-            List<City> cities = cmgr.Find (new City ());
-            cmgr.Remove ((cities.First (p => p.Id == id)).Id);
-            return Json (cities);
+        public JsonResult DeleteCity(int id)
+        {
+            Console.WriteLine(id);
+            List<City> cities = cmgr.Find(new City());
+            cmgr.Remove((cities.First(p => p.Id == id)).Id);
+            return Json(cities);
         }
-        public PartialViewResult SearchPartial (string City) {
-            List<City> cities = cmgr.Find (new City ());
-            return PartialView ("_citySearch", cities.Where (p => p.Name.StartsWith (City)));
-        }
-        // GET: City/Details
-        public ActionResult Details (int id) {
 
-            if (id - 1 == null) {
-                return NotFound ();
+        public PartialViewResult SearchPartial(string City)
+        {
+            List<City> cities = cmgr.Find(new City());
+            return PartialView("_citySearch", cities.Where(p => p.Name.StartsWith(City)));
+        }
+
+        // GET: City/Details
+        public ActionResult Details(int id)
+        {
+            if (id - 1 == null)
+            {
+                return NotFound();
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            List<City> cities = cmgr.Find (new City ());
-            if (cities.First (p => p.Id == id) == null) {
-                return NotFound ();
+            List<City> cities = cmgr.Find(new City());
+            if (cities.First(p => p.Id == id) == null)
+            {
+                return NotFound();
             }
 
-            return View (cities.First (p => p.Id == id));
+            return View(cities.First(p => p.Id == id));
         }
         //Delete
 
         // GET: City/Delete/5
-        public ActionResult Delete (int? id) {
-            if (id == null) {
-                return NotFound ();
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
             }
-            List<City> cities = cmgr.Find (new City ());
-            if (cities.First (p => p.Id == id) == null) {
-                return NotFound ();
+
+            List<City> cities = cmgr.Find(new City());
+            if (cities.First(p => p.Id == id) == null)
+            {
+                return NotFound();
             }
-            return View (cities.First (p => p.Id == id));
+
+            return View(cities.First(p => p.Id == id));
         }
 
         //------------------------------------------
         // POST: city/Delete/5
-        [HttpPost, ActionName ("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed (int id) {
-            cmgr.Remove (id);
-            return RedirectToAction ("viewCity");
+        public ActionResult DeleteConfirmed(int id)
+        {
+            cmgr.Remove(id);
+            return RedirectToAction("viewCity");
         }
 
-        public ActionResult Edit (int id) {
-            if (id == null) {
-                return NotFound ();
+        public ActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
             }
-            List<City> cities = cmgr.Find (new City ());
-            if (cities[id] == null) {
-                return NotFound ();
+
+            List<City> cities = cmgr.Find(new City());
+            if (cities[id] == null)
+            {
+                return NotFound();
             }
-            return View (cities[id]);
+
+            return View(cities[id]);
         }
+
         // POST: Cities/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit ([Bind (include: "Id,Name,CreationDate,OwnerId,LastModificationDate,ModifierId")] City city) {
-            if (ModelState.IsValid) {
-                cmgr.Edit (city);
-                return RedirectToAction ("ViewCity");
+        public ActionResult Edit([Bind(include: "Id,Name,CreationDate,OwnerId,LastModificationDate,ModifierId")]
+            City city)
+        {
+            if (ModelState.IsValid)
+            {
+                cmgr.Edit(city);
+                return RedirectToAction("ViewCity");
             }
-            return View (city);
-        }
 
+            return View(city);
+        }
     }
 }

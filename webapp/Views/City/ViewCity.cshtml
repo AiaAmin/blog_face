@@ -1,7 +1,4 @@
-﻿@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
-@using X.PagedList;
-@model IEnumerable<Dal.models.City>
-<p>
+﻿<p>
     <a asp-action="Create">Create New</a>
 </p>
 <hr />
@@ -23,14 +20,6 @@
 <hr />
 <div id="PartCity">
     <!-- paging control for navigation to the previous page, next page, etc -->
-    @Html.PagedListPager((IPagedList)Model, page => Url.Action("ViewCity", new { page = page }),
-        new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
-        {
-            DisplayItemSliceAndTotal = false,
-            ContainerDivClasses = new[] { "navigation" },
-            LiElementClasses = new[] { "page-item" },
-            PageClasses = new[] { "page-link" },
-        });
     <table>
         <thead>
             <tr>
@@ -44,24 +33,8 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody class="table">
-            @foreach (var item in Model)
-            {
-                <tr class="tROW">
-                    <td id="EditId">
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td id="EditName">
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        <span id="SubmitEdit"><button type="button" class="Edit-city btn btn-warning" data-city-id="@item.Id">Edit</button></span>
-                        <button type="button" class="Details-of-city btn btn-info " data-toggle="modal" data-target="#myModal" data-city-id="@item.Id">Details</button>
-                        <button type="button" class="delete-city btn btn-danger" data-city-id="@item.Id">Delete</button>
-                    <td>
-                    </td>
-                </tr>
-            }
+        <tbody id="city-tbl-body" class="table">
+            
         </tbody>
     </table>
 
@@ -92,6 +65,25 @@
 
 <script type="text/javascript">
 $(function(){
+    
+    // load initial content
+         $.ajax({
+            url: '/city/DetailsCity/'+cityId,
+            dataType: "json",
+            type: "GET",
+            data: JSON.stringify({id: cityId}),
+            async: true,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                $(".modal-title").text("Details of "+data.name);
+                $("#DetailsCity").text("Id : "+data.id+"\n Name :"+data.name);
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+    });
+    
     $("#create-city").click(function(){
             var cityName=$("#city-name").val();
              // Get the snackbar DIV

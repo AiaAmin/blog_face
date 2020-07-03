@@ -6673,38 +6673,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aia\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/Users/ayman/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj",
+      "projectUniqueName": "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj",
       "projectName": "DalTest",
-      "projectPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\DalTest.csproj",
-      "packagesPath": "C:\\Users\\Aia\\.nuget\\packages\\",
-      "outputPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\DalTest\\obj\\",
+      "projectPath": "/Users/ayman/RiderProjects/blogSol/DalTest/DalTest.csproj",
+      "packagesPath": "/Users/ayman/.nuget/packages/",
+      "outputPath": "/Users/ayman/RiderProjects/blogSol/DalTest/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Aia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/ayman/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj": {
-              "projectPath": "F:\\development\\Study-programming\\c#\\c#\\blog_face\\Dal\\Dal.csproj"
+            "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj": {
+              "projectPath": "/Users/ayman/RiderProjects/blogSol/Dal/Dal.csproj"
             }
           }
         }
@@ -6758,7 +6751,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
       }
     }
   }
