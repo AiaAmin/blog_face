@@ -68,16 +68,13 @@ $(function(){
     
     // load initial content
          $.ajax({
-            url: '/city/DetailsCity/'+cityId,
+            url: '/city/list?pageNumber=1&pageSize10',
             dataType: "json",
             type: "GET",
-            data: JSON.stringify({id: cityId}),
-            async: true,
-            processData: false,
             cache: false,
             success: function (data) {
-                $(".modal-title").text("Details of "+data.name);
-                $("#DetailsCity").text("Id : "+data.id+"\n Name :"+data.name);
+                console.log("in ajax get response");
+                console.log(data);
             },
             error: function (xhr) {
                 alert('error');
